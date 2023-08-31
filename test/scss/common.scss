@@ -1,0 +1,304 @@
+// Scss Document
+
+@import "foundation/reset";
+@import "foundation/mixin";
+@import "foundation/fonts";
+
+
+html {
+	font-family: 'Noto Serif JP','Yu Mincho Light','YuMincho','Yu Mincho','游明朝体','ヒラギノ明朝 ProN','Hiragino Mincho ProN',sans-serif;
+	font-weight: 400;
+	font-size: 62.5%;
+}
+
+body {
+	margin: 0;
+	color: $base;
+	font-size: 1.6rem;
+	width: 100%;
+	overflow-x: hidden;
+	position: relative;
+	-webkit-animation: fadeIn 2s ease 0s 1 normal;
+	animation: fadeIn 2s ease 0s 1 normal;
+	&:after {
+		content: '';
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		background-color: rgba(0,0,0,0.4);
+		left: 0;
+		top: 0;
+		z-index: -1;
+		opacity: 0;
+		visibility: hidden;
+		-webkit-transition: all 0.6s;
+		transition: all 0.6s;
+	}
+	&.fixed {
+		position: fixed;
+		width: 100%;
+		&:after {
+			z-index: 90;
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+	@include max_tab {
+		padding-top: 70px;
+	};
+	@include max_sp {
+		padding-top: 60px;
+		font-size: 1.4rem;
+	};
+}
+
+@keyframes fadeIn {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+
+
+
+
+a, a:link, a:visited {
+	color: $base;
+	text-decoration: none;
+	transition: 0.5s;
+}
+
+img {
+	max-width: 100%;
+	width: auto;
+	height: auto;
+	vertical-align: bottom;
+	transition: 0.5s;
+}
+
+
+.container {
+	margin: auto;
+	width: 90%;
+	max-width: $container;
+	height: auto;
+	box-sizing: border-box;
+	.innerBox {
+		margin: auto;
+		width: 92%;
+		max-width: 1100px;
+		height: auto;
+		box-sizing: border-box;
+	}
+}
+
+
+main {
+	display: block;
+}
+
+
+/*============================================================================
+	missionWrap
+=============================================================================*/
+#missionWrap {
+	margin: 100px auto 500px;
+	width: 100%;
+	position: relative;
+	.marqueeTextArea {
+		padding: 0 0 0 100%;
+		font-size: 10rem;
+		line-height: 1;
+		width: 100%;
+		box-sizing: border-box;
+		overflow: hidden;
+		.marqueeTarget {
+			p {
+				margin: 0;
+				width: fit-content;
+				white-space: nowrap;
+			}
+		}
+	}
+}
+ 
+
+/*============================================================================
+	手書きJS
+=============================================================================*/
+.stretchLineBox {
+    padding: 50vh 0;
+    width: 100%;
+	height: auto;
+	.line {
+		margin: auto;
+		width: 100vw;
+		height: 5px;
+		background: #EC4E20;
+		transform: scale(0);
+	}
+}
+/*
+.contents {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    width: 0;
+    height: 5px;
+    background: #EC4E20;
+}
+*/
+
+
+
+/*============================================================================
+	スライドマスク
+=============================================================================*/
+/* css版 */
+.colorSlide {
+	margin: auto;
+	background-color: transparent;
+	opacity: 0;
+	overflow: hidden;
+	&.isPlay {
+		animation-name: play;
+		animation-duration: 0.8s;
+		animation-fill-mode: forwards;
+		animation-timing-function: cubic-bezier(.8,0,.5,1);
+		position: relative;
+		opacity: 1!important;
+		&::after {
+			content: '';
+			width: 100%;
+			height: 100%;
+			background: #ffffff;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 1;
+			animation-name: maskOut;
+			animation-duration: 0.8s;
+			animation-delay: .8s;
+			animation-fill-mode: forwards;
+			animation-timing-function: cubic-bezier(.8,0,.5,1);
+		}
+	}
+}
+
+
+@keyframes play {
+  from {
+  	opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+  	opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes maskOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+
+
+/*============================================================================
+	スライドマスク scrollTrigger版
+=============================================================================*/
+.maskimgWrap02 {
+	margin: 20vh auto ;
+	width: 100%;
+	.imageList02 {
+		.colorSlide_st {
+			position: relative;
+			overflow: hidden;
+			a {
+				img {
+					clip-path: polygon(26.8% 0%, 100% 0%, 73.2% 100%, 0% 100%);
+				}
+			}
+			figcaption {
+				width: 100%;
+				height: 100%;
+				background: #ff553c;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 1;
+			}
+		}
+	}
+}
+
+
+
+/*============================================================================
+	真ん中からアニメーション
+=============================================================================*/
+.centerSeparate {
+	margin: auto;
+	max-width: $container;
+	width: 90%;
+	.boxWrap {
+		width: 50%;
+		overflow-x: hidden;
+		position: relative;
+		&::before {
+			content: '';
+			padding-top: 92.3%;
+			display: block;
+		}
+		.boxL, .boxR {
+			margin: auto;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+		}
+		.boxL {
+			background: $sub01;
+			border-radius: $corner 0 0 0;
+			left: 100%;
+		}
+		.boxR {
+			background: $green;
+			border-radius: 0 0 $corner 0;
+			right: 100%;
+		}
+		&:last-of-type {
+			top: 40px;
+		}
+	}
+}
+
+
+nav {
+	padding: uqMin(80) 0;
+	background: #f5f5f5;
+	ul {
+		margin: auto;
+		max-width: $container;
+		width: 90%;
+		li {
+			list-style: disc;
+			+ li { margin-top: 15px; }
+		}
+	}
+}
+
+/*============================================================================
+	regulation
+=============================================================================*/
+@import "foundation/regulation";

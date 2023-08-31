@@ -1,0 +1,172 @@
+// Scss Document
+
+/*============================================================================
+	調整用
+=============================================================================*/
+.fl {
+	display:-webkit-flex;
+	display:-moz-flex;
+	display:flex;
+}
+.fl-tab {
+	display:-webkit-flex;
+	display:-moz-flex;
+	display:flex;
+	@include max_tab {
+		-webkit-flex-direction:column;
+		-moz-flex-direction:column;
+		flex-direction:column;
+	};
+}
+.fl-smp {
+	display:-webkit-flex;
+	display:-moz-flex;
+	display:flex;
+	@include max_sp {
+		-webkit-flex-direction:column;
+		-moz-flex-direction:column;
+		flex-direction:column;
+	};
+}
+
+
+.fl-jst {
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+}
+
+.fl-cen {
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+}
+
+.fl-end {
+	-webkit-box-pack: end;
+	-ms-flex-pack: end;
+	justify-content: flex-end;
+}
+
+.fl-wrap {
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
+.fl-col {
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+}
+
+.fl-reverse {
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: reverse;
+	-ms-flex-direction: row-reverse;
+	flex-direction: row-reverse;
+}
+
+
+// gutter
+@for $i from 0 through 10 {
+	.mt#{$i * 40} {
+		margin-top: unquote('min(#{$i * 3}vw,#{$i * 40}px)');
+	}
+	.mb#{$i * 40} {
+		margin-bottom: unquote('min(#{$i * 3}vw,#{$i * 40}px)');
+	}
+	.pt#{$i * 40} {
+		padding-top: unquote('min(#{$i * 3}vw,#{$i * 40}px)');
+	}
+	.pb#{$i * 40} {
+		padding-bottom: unquote('min(#{$i * 3}vw,#{$i * 40}px)');
+	}
+}
+
+
+
+br {
+	display: inline;
+	@include min_pc {
+		&.showPC { display: none!important; }
+	};
+	@include min_tab {
+		&.showTab { display: none!important; }
+	};
+	@include min_sp {
+		&.showSP { display: none!important; }
+	};
+	@include max_pc {
+		&.hdnPC { display: none; }
+		&.showPC { display: inherit; }
+	};
+	@include max_tab {
+		&.hdnTab { display: none; }
+		&.showTab { display: inherit; }
+	};
+	@include max_sp {
+		&.hdnSP { display: none; }
+		&.showSP { display: inherit; }
+	};
+}
+
+span {
+	display: inline-block;
+	@include min_pc {
+		&.showPC { display: none!important; }
+	};
+	@include min_tab {
+		&.showTab { display: none!important; }
+	};
+	@include min_sp {
+		&.showSP { display: none!important; }
+	};
+	@include max_pc {
+		&.hdnPC { display: none!important; }
+		&.showPC { display: inherit; }
+	};
+	@include max_tab {
+		&.hdnTab { display: none!important; }
+		&.showTab { display: inherit; }
+	};
+	@include max_sp {
+		&.hdnSP { display: none!important; }
+		&.showSP { display: inherit; }
+	};
+}
+
+p, div, figure, ul {
+	display: block;
+	@include min_pc {
+		&.showPC { display: none!important; }
+	};
+	@include min_tab {
+		&.showTab { display: none!important; }
+	};
+	@include min_sp {
+		&.showSP { display: none!important; }
+	};
+	@include max_pc {
+		&.hdnPC { display: none!important; }
+		&.showPC { display: inherit; }
+	};
+	@include max_tab {
+		&.hdnTab { display: none!important; }
+		&.showTab { display: inherit; }
+	};
+	@include max_sp {
+		&.hdnSP { display: none!important; }
+		&.showSP { display: inherit; }
+	};
+}
+
+
+.ta_cnt { text-align: center; }
+.ta_right { text-align: right; }
+
+.clearfix:after {
+	content:"";
+	display:block;
+	clear:both;
+}

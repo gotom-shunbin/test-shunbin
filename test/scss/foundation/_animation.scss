@@ -1,0 +1,67 @@
+// Scss Document
+
+/* scroll */
+.fade {
+	opacity: 0;
+	transition: all 0.8s;
+	&.active {
+		opacity: 1;
+	}
+}
+
+.upfade {
+	transform: translate(0, 50px);
+	opacity: 0;
+	transition: all 0.8s;
+	&.scrollin {
+		transform: translate(0, 0);
+		opacity: 1;
+	}
+}
+
+.downfade {
+	transform: translate(0, -50px);
+	opacity: 0;
+	transition: all 0.8s;
+	&.scrollin {
+		transform: translate(0, 0);
+		opacity: 1;
+	}
+}
+
+.sclinWrap {
+	overflow: hidden !important;
+}
+
+.sclin_right {
+	transform: translate(50px, 0);
+	opacity: 0;
+	transition: all 0.8s;
+	&.scrollin {
+		transform: translate(0, 0);
+		opacity: 1;
+	}
+}
+
+.sclin_left {
+	transform: translate(-50px, 0);
+	opacity: 0;
+	transition: all 0.8s;
+	&.scrollin {
+		transform: translate(0, 0);
+		opacity: 1;
+	}
+}
+
+
+.listfade li {
+	transform: translate(0, 50px);
+	opacity: 0.1;
+	transition: all 1.0s;
+	&.scrollin {
+		transform: translate(0, 0);
+		opacity: 1;
+	}
+}
+
+
